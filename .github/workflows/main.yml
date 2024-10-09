@@ -24,6 +24,10 @@ jobs:
 
             - name: copy index.html to 404.html
               run: cp dist/Web/wwwroot/index.html dist/Web/wwwroot/404.html
+
+            # changes the base-tag in index.html from '/' to 'BlazorGitHubPagesDemo' to match GitHub Pages repository subdirectory
+            - name: Change base-tag in index.html from / to mudexample
+              run: sed -i 's/<base href="\/" \/>/<base href="\/mudexample\/" \/>/g' release/wwwroot/index.html              
               
             - name: Add .nojekyll file
               run: touch dist/Web/wwwroot/.nojekyll              
